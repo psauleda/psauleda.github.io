@@ -1,0 +1,202 @@
+---
+title: 'PAC2: Infografia activitat sísmica'
+author: "Autor: Pere Sauleda"
+date: "Abril 2024"
+output:
+  html_document:
+    highlight: default
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 2
+    includes:
+      in_header: 05.584-PAC-header-1.html
+  word_document: default
+  pdf_document:
+    highlight: zenburn
+    toc: yes
+---
+
+
+# Introducció
+
+Plantegem l'**estudi de l'activitat sísmica mundial** per tal crear una infografia al respecte.
+
+# Elecció del conjunt de dades
+
+Considerem el joc de dades procedents de [Kaggle](https://www.kaggle.com/), en particular: 
+
+  - https://www.kaggle.com/datasets/mohitkr05/global-significant-earthquake-database-from-2150bc
+
+Aquest dataset, *Global Significant Earthquake Database from 2150BC*, és un llistat d'uns 6000 terratrèmols que van del 2150 BC fins a l'actualitat. Això ja ens diu de bones a primeres que les dades prèvies a l'ús d'instruments i recull de dades, probablement són incompletes. De fet, ja avanço que aquest conjunt de dades és altament incomplet, però com que considerarem els darrers 125 anys, eliminarem una bona quantitat de dades. 
+
+# Objectius
+
+Volem crear una infografia que ens mostri la posició dels terratrèmols més significatius dels darrers 125 anys. A través d'ella volem mostrar que hi ha un patró que posa en evidència l'existència de les plaques tectòniques i els seus límits coincideixen amb les zones de més activitat.
+Alhora volem mostrar quins són els factors que determinen la mortalitat, ho farem amb l'ajuda de gràfiques de barres i volem posar de manifest que aquests factors són:  
+- Adopció de sistemes de prevenció.
+- Riquesa / pobresa del país, (molt lligat amb l'anterior).
+- Densitat de població.
+
+# Inspecció de les dades
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+El primer que fem és carregar les dades i si volem podem fer una ullada per veure de quantes variable, de quin tipus són i de quants registres disposem.
+```{r}
+dades <- read_csv('Worldwide-Earthquake-database.csv')
+# glimpse(dades)
+attach(dades)
+```
+
+No inclourem la descripció de les dades ja que només ens interessen la posició (latitud i longitud), la magnitud (*EQ_PRIMARY*), el país (*COUNTRY*) i la mortalitat (*DEATHS*, *DEATHS_DESCRIPTION*)
+
+
+## Neteja
+
+Primer ens quedem amb les columnes que ens interessen:
+```{r}
+dades <- dades |> 
+  select(I_D, YEAR, EQ_PRIMARY, COUNTRY, LOCATION_NAME, LATITUDE, LONGITUDE, DEATHS)
+```
+
+Tot seguit fem:
+
+  - Eliminem les dades anteriors al 1900. És a dir, considerem l'activitat sísmica del 1900 endavant.
+  - Tenint en compte les variables que més ens interessen, netegem els camps: EQ_PRIMARY (magnitud) i DEATHS (nombre de morts).
+
+```{r}
+dades_1900 <- dades |> 
+  filter(YEAR >= 1900)
+
+dades_netes <- dades_1900 |>
+  filter(YEAR >= 1900 & !is.na(EQ_PRIMARY) & !is.na(DEATHS))
+```
+
+
+
+## Anàlisi i visualització
+
+La distribució de terratrèmols, tenint en compte la magnitud. (Ho representem en un mapa, per fer-lo més gran fem servir:  
+https://ggplot2-book.org/maps.html, https://www.tidyverse.org/blog/2020/08/taking-control-of-plot-scaling/) :
+```{r message=FALSE}
+library(maps)
+library(ggthemes)
+```
+
+```{r}
+world <- map_data('world') 
+
+title <- "Mapa de Terratrèmols segons la magnitud"
+wr <- map_data("world")
+
+p <- ggplot(dades_1900) + 
+  geom_map(data = world, map = world, 
+           aes(map_id = region), 
+           fill="#ededed", 
+           colour="#7f7f7f") +
+  expand_limits(x = world$long, y = world$lat) +
+  geom_point(aes(x = LONGITUDE, y = LATITUDE, color = EQ_PRIMARY),
+             size = 0.8) + 
+  ggtitle(title) +
+  labs(x = "Longitud", y = "Latitud", color = "Magnitud") +
+  scale_colour_gradient(high = "darkred", low = "yellow") +
+  theme(
+  panel.background = element_rect(fill = "#c5ecfc",
+                                colour = "#c5ecfc",
+                                size = 0.5, linetype = "solid"),
+  panel.border = element_blank(),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank()
+  )
+
+pngfile <- fs::path(knitr::fig_path(),  "mapa1.png")
+
+library(ragg)
+agg_png(pngfile, width = 30, height = 15, units = "cm", res = 300)
+plot(p)
+invisible(dev.off())
+knitr::include_graphics(pngfile)
+```
+
+Aquest mapa mostra l'activitat sísmica més significativa. Es pot veure com els punts estan alineats indicant els límits de les plaques tectòniques.
+
+
+
+Hem anat fent visualitzacions en el mapa, però ara volem especificar la relació dels terratrèmols amb la geografia, és a dir països on n'hi ha més i a on són més greus.
+
+Comencem amb amb els països on l'activitat sísmica és més gran, llistarem els 10 primers:
+```{r}
+top10_quant <- dades_1900  |>
+  group_by(COUNTRY) |> 
+  summarize(earthq_num = n()) |> 
+  filter(COUNTRY != "")  |> 
+  arrange(desc(earthq_num)) |> 
+  head(n = 10)
+
+# https://sebastiansauer.github.io/ordering-bars/
+ggplot(top10_quant, 
+       aes(x = reorder(COUNTRY, -earthq_num), y = earthq_num, 
+           fill = earthq_num)) + 
+  geom_bar(position = "dodge", stat = "identity", fill = "#023047") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(title = "Països amb més nombre de terratrèmols", 
+       x = "País", y = "Nombre de terratrèmols",
+       fill = "Nombre terratrèmols") +
+  theme(
+  panel.border = element_blank(),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank()
+  )
+
+```
+
+Volem ara llistar els 10 pitjors terratrèmols en magnitud, a quines zones han passat:
+```{r}
+top20_mag <- dades_1900  |>
+ group_by(LOCATION_NAME , EQ_PRIMARY) |> 
+ filter(COUNTRY != "") |> 
+ arrange(desc(EQ_PRIMARY)) |> 
+ head(n = 10)
+
+ ggplot(top20_mag, 
+        aes( x = reorder(LOCATION_NAME, -EQ_PRIMARY), y = EQ_PRIMARY,
+             fill = EQ_PRIMARY)) + 
+   geom_bar(position = "dodge", stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(title = "Terratrèmols més forts", 
+       x = "Zona", y = "Magnitud",
+       fill = "Magnitud") +
+  scale_fill_gradient(high = "#132B43", low = "lightblue")
+```
+
+Els terratrèmols que han causat més morts, (que no han de coincidir amb els anteriors, és a dir amb els de més magnitud).
+```{r}
+top10_dead <- dades_1900  |>
+ group_by(COUNTRY , DEATHS) |> 
+ filter(COUNTRY != "") |> 
+ arrange(desc(DEATHS)) |> 
+ head(n = 15)
+
+ ggplot(top10_dead, 
+        aes( x = reorder(COUNTRY, -DEATHS), y = DEATHS, fill = DEATHS)) + 
+   geom_bar(position = "dodge", stat = "identity", fill = "#219ebc") +
+   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+   labs(title = "Terratrèmols més mortals", 
+        x = "Zona", y = "Morts",
+        fill = "Morts") +
+  theme(
+  panel.border = element_blank(),
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank()
+  )
+ 
+ print(top10_dead)
+```
+
+
+Observacions:
+
+D'aquestes darreres 4 gràfiques es poden observar algunes característiques. Xina encapçala els països amb més nombre de terratrèmols, Japó també. En quant a magnitud, destaquem Xile, Indonèsia, Japó, Rússia (Kamtxatka) i Alaska. Si mirem el nombre de morts, Haití és el primer de la llista i no apareix a les llistes anteriors, això ens pot indicar que és una zona altament poblada i un país molt pobre. En aquesta llista de més mortalitat, no hi apareixen ni Kamtxatka ni Alaska (amb terratrèmols de gran magnitud), ja que són zones amb una densitat de població molt baixa.  
