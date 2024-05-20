@@ -58,11 +58,22 @@ a {
 .container {
   text-align: center;
 }
-img {
-  width: 80%;
- 
-}
 
 .tableau {
   text-align: center;
 }
+
+div.bloc {
+  margin-bottom: 50px;
+}
+
+img.titol {
+  width: 90%;
+}
+
+ul {
+  margin-left: 50px;
+}
+
+section {
+  margin-bottom: 50px;}
