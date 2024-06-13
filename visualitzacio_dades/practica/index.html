@@ -1,12 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pràctica Visualització de dades</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width= , initial-scale=1.0">
+  <title>Visualització de dades: PRÀCTICA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+  integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+  crossorigin="anonymous"/>
 </head>
 <body>
-    <h1>Prova amb Flourish</h1>
-    <div class="flourish-embed flourish-chart" data-src="visualisation/18234451"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <h1> PRÀCTICA:</h1>
+      <h2>Comerç amb l'exterior: Importacions i exportacions a Catalunya</h2>
+      <br>
+      <ul>
+        <li><b>Autor:</b> Pere Sauleda Serra</li>
+        <li><b>Assignatura:</b> Màster de ciència de dades UOC: Visualització de dades, juny de 2024</li>
+      </ul>
+      <br>
+      <h3>Accés a la visualització</h3>
+        <p>Visualització penjada a GitHub: <a href="http://psauleda.github.io/visualitzacio_dades/practica">http://psauleda.github.io/visualitzacio_dades/practica</a></p>
+        <p>També penjada a Tableu Public: <a href="https://public.tableau.com/app/profile/pere.vi8150/">POSAR ENLLAÇ CORRECTE</a></p>
+      <br>
+      <h3>Font de les dades</h3>
+      <br>
+      <div class="bloc">
+        <p><a href="https://analisi.transparenciacatalunya.cat/"><img src="./imatges/dades_obertes.png" alt="GENCAT" height="60" width="150" style="vertical-align:middle; margin-left:100px;"> Portal de dades obertes</a>
+      
+      <a href="https://www.idescat.cat/estad/comest"><img src="./imatges/idescat.png" alt="IDESCAT" height="60" width="150" style="vertical-align:bottom; margin-left:100px;"> Institut d’Estadística de Catalunya</a></p>
+      </div>
+      <p>Fem una visualització sobre el comerç exterior , en particular les importacions i exportacions catalanes. L'accés a les dades és a través del Portal de dades obertes de la Generalitat de Catalunya i a l’Institut d’Estadística de Catalunya (IDESCAT).</p>
+        <p>Plantegem un punt de vista temporal o evolutiu, per països i a la vegada, ampliem l’anàlisi per diferents productes o béns, i tipus de transport a través del qual viatgen les mercaderies.
+        </p>
+        <p>En particular considerem les següents taules:</p>
+        <ul>
+          <li>Importacions/Exportacions realitzades per Catalunya a nivell mundial.</li>
+          <li>Importacions/Exportacions. Per branques d'activitat.</li>
+          <li>Importacions/Exportacions. Per destinació econòmica dels béns.</li>
+          <li>Importacions/Exportacions de productes industrials. Per contingut tecnològic i
+            grups de productes.</li>
+          <li>Comerç amb l'estranger. Per mitjans de transport.</li>
+        </ul>
+        <br>
+      <h3>Procés de creació</h3>
+      <p>Per fer aquesta visualització hem triat un conjunt d'eines i tecnologies per tal de preparar les dades en la forma més addient i visualitzar-les atenent a diferents qüestions plantejades.</p>
+      <p>Hem fet servir:</p><br>
+      <div class="bloc">
+      <p><a href="https://www.r-project.org/"><img src="./imatges/r-logo.png" alt="kaggle" height="40" width="40" style="vertical-align:bottom"></a> pel tractament de les dades</p>
+      <ul>
+        <li>Hem fusionat les taules d'importació i exportació en una sola taula, agrupant camps en cas necessari. Hem completat la taula de països i hem separat la data en mes i any o trimestre i any. Hem reduït per tant el nombre de taules a la meitat. R Studio ens ha per més fer-ho de manera ràpida, obtenint nous fitxers CSV.</li>
+      </ul>
+      </div>
+      <div class="bloc">
+        <p><a href="https://www.tableau.com/"><img src="./imatges/tableau-logo.jpg" alt="kaggle" height="40" width="150" style="vertical-align:bottom"></a> per les visualitzacions</p>
+        </div>
+    </div>
+  
+  <div class="bloc" >
+    <h2>Comerç amb l'exterior: Importacions i exportacions catalanes</h2>
+  </div>
+    <div class="bloc"  style="text-align:center; margin-bottom: 50px">
+    <img src="/imatges/imp-exp.png" alt="Comerç" width="40%">
+    </div>
+  <section>
+    <h2>Visió general temporal</h2>
+    <h3>Evolució del total de les importacions i exportacions en els darrers anys</h3>
+    <p>D'una manera general podem veure les variacions temporals dels totals de les importacions i exportacions.</p>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718178892924' style='position: relative'><noscript><a href='#'><img alt='Import&#47;Export Totals ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportExportTotals&#47;ImportExportTotals&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImportExportTotals&#47;ImportExportTotals' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportExportTotals&#47;ImportExportTotals&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718178892924');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+  <section>
+    <h3>Evolució en funció del transport usat</h3>
+    <p>Considerem els següents mitjans de transport:</p>
+    <div class="centrat" style="margin-bottom: 40px;">
+    <img src="./imatges/transports.png" alt="transports" width="50%">
+  </div>
+  <div class="centrat">
+    <div class='tableauPlaceholder' id='viz1718189634968' style='position: relative'><noscript><a href='#'><img alt='Transport ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;Transport_17181816881130&#47;Transport&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Transport_17181816881130&#47;Transport' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;Transport_17181816881130&#47;Transport&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718189634968');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+  </div>
+  </section>
+  <section>
+    <h3>Tipus de béns</h3>
+    <div class="centrat">
+
+      <div class='tableauPlaceholder' id='viz1718127949339' style='position: relative'><noscript><a href='#'><img alt='Importacions &#47; Exportacions Béns ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportacionsExportacionsBns&#47;ImportacionsExportacionsBns&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImportacionsExportacionsBns&#47;ImportacionsExportacionsBns' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportacionsExportacionsBns&#47;ImportacionsExportacionsBns&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718127949339');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+</section>
+<section>
+    <h3>Nivell tecnològic</h3>
+    <div class="centrat">
+    <div class='tableauPlaceholder' id='viz1718176699350' style='position: relative'><noscript><a href='#'><img alt='Imortacions&#47;Exportacions Nivell Tech ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImortacionsExportacionsNivellTech&#47;ImortacionsExportacionsNivellTech&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImortacionsExportacionsNivellTech&#47;ImortacionsExportacionsNivellTech' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImortacionsExportacionsNivellTech&#47;ImortacionsExportacionsNivellTech&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718176699350');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.4)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.4)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+    </div>
+  </section>
+  <section>
+    <h3>Rànquing països</h3>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718261725725' style='position: relative'><noscript><a href='#'><img alt='Ranquing països ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pa&#47;pasos-flags&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='pasos-flags&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pa&#47;pasos-flags&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718261725725');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='100%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+          <div class="bloc">
+    
+      <h3>Descripció</h3>
+      <p></p>
+  </div>
+  <div class="bloc">
+    <h3>Estructura</h3>
+    <ul>
+      <li>Introducció</li>
+      <li>Mapa</li>
+      <li>Ditribució</li>
+      <li>Sismicitat per país</li>
+      <li>Mortalitat</li>
+      <li>Conclusió final</li>
+    </ul>
+    
+  </div>
+</header>
+
+</section>
+
+<section>
+  <h3>Introducció:</h3>
+  
+</section>
+  
 </body>
 </html>
