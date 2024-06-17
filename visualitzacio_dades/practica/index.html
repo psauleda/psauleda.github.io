@@ -14,7 +14,7 @@
   <!-- Header -->
   <header class="header">
     <div>
-      <h1> PRÀCTICA:</h1>
+      <h1> PRÀCTICA, (part 2):</h1>
       <h2>Comerç amb l'exterior: Importacions i exportacions a Catalunya</h2>
       <br>
       <ul>
@@ -24,8 +24,8 @@
       <br>
       <h3>Accés a la visualització</h3>
         <p>Visualització penjada a GitHub: <a href="http://psauleda.github.io/visualitzacio_dades/practica">http://psauleda.github.io/visualitzacio_dades/practica</a></p>
-        <p>També penjada a Tableu Public: <a href="https://public.tableau.com/app/profile/pere.vi8150/">POSAR ENLLAÇ CORRECTE</a></p>
       <br>
+    </header>
       <h3>Font de les dades</h3>
       <br>
       <div class="bloc">
@@ -33,7 +33,7 @@
       
       <a href="https://www.idescat.cat/estad/comest"><img src="./imatges/idescat.png" alt="IDESCAT" height="60" width="150" style="vertical-align:bottom; margin-left:100px;"> Institut d’Estadística de Catalunya</a></p>
       </div>
-      <p>Fem una visualització sobre el comerç exterior , en particular les importacions i exportacions catalanes. L'accés a les dades és a través del Portal de dades obertes de la Generalitat de Catalunya i a l’Institut d’Estadística de Catalunya (IDESCAT).</p>
+      <p>Fem una visualització sobre el comerç amb l'exterior , en particular les importacions i exportacions catalanes. L'accés a les dades és a través del Portal de dades obertes de la Generalitat de Catalunya i a l’Institut d’Estadística de Catalunya (IDESCAT).</p>
         <p>Plantegem un punt de vista temporal o evolutiu, per països i a la vegada, ampliem l’anàlisi per diferents productes o béns, i tipus de transport a través del qual viatgen les mercaderies.
         </p>
         <p>En particular considerem les següents taules:</p>
@@ -52,11 +52,14 @@
       <div class="bloc">
       <p><a href="https://www.r-project.org/"><img src="./imatges/r-logo.png" alt="kaggle" height="40" width="40" style="vertical-align:bottom"></a> pel tractament de les dades</p>
       <ul>
-        <li>Hem fusionat les taules d'importació i exportació en una sola taula, agrupant camps en cas necessari. Hem completat la taula de països i hem separat la data en mes i any o trimestre i any. Hem reduït per tant el nombre de taules a la meitat. R Studio ens ha per més fer-ho de manera ràpida, obtenint nous fitxers CSV.</li>
+        <li>Hem fusionat les taules d'importació i exportació en una sola taula, agrupant camps en cas necessari.</li>
+        <li>Hem completat la taula de països i hem separat la data en mes i any o trimestre i any.</li>
+        <li>Hem afegit algun camp addicional en alguna taula, com ara enllaços a icones o banderes de països.</li>
+        <li>Hem reduït per tant el nombre de taules a la meitat. R Studio ens ha per més fer-ho de manera ràpida, obtenint nous fitxers CSV.</li>
       </ul>
       </div>
       <div class="bloc">
-        <p><a href="https://www.tableau.com/"><img src="./imatges/tableau-logo.jpg" alt="kaggle" height="40" width="150" style="vertical-align:bottom"></a> per les visualitzacions</p>
+        <p><a href="https://www.tableau.com/"><img src="./imatges/tableau-logo.jpg" alt="kaggle" height="40" width="150" style="vertical-align:bottom"></a> per les visualitzacions. Amb aquesta eina hem creat diferents tipus de gràfics interactius per tal de poder explorar les diferents taules.</p>
         </div>
     </div>
   
@@ -64,71 +67,186 @@
     <h2>Comerç amb l'exterior: Importacions i exportacions catalanes</h2>
   </div>
     <div class="bloc"  style="text-align:center; margin-bottom: 50px">
-    <img src="/imatges/imp-exp.png" alt="Comerç" width="40%">
+    <img src="./imatges/imp-exp.png" alt="Comerç" width="40%">
     </div>
   <section>
-    <h2>Visió general temporal</h2>
+    <h2>Visió general de les importacions i exportacions de Catalunya</h2>
     <h3>Evolució del total de les importacions i exportacions en els darrers anys</h3>
     <p>D'una manera general podem veure les variacions temporals dels totals de les importacions i exportacions.</p>
+    <p>Ho fem des de diferents punts de vista i amb gràfics de línies. Volem contestar a preguntes com: com han evolucionat les importacions i exportacions en els darrers anys?. Quins anys presenten algun succés rellevant?. Com han variat tenint en compte el mitjà de transport, la destinació econòmica del tipus de bé o pel nivell o contingut tecnològic?</p>
+    <p>Comencem amb les visualitzacions de l'evolució:</p>
     <div class="centrat">
       <div class='tableauPlaceholder' id='viz1718178892924' style='position: relative'><noscript><a href='#'><img alt='Import&#47;Export Totals ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportExportTotals&#47;ImportExportTotals&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImportExportTotals&#47;ImportExportTotals' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportExportTotals&#47;ImportExportTotals&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718178892924');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     </div>
   </section>
   <section>
     <h3>Evolució en funció del transport usat</h3>
-    <p>Considerem els següents mitjans de transport:</p>
-    <div class="centrat" style="margin-bottom: 40px;">
-    <img src="./imatges/transports.png" alt="transports" width="50%">
-  </div>
+    <p>Considerem els següents mitjans de transport: per carretera, marítim, aèri i ferroviari.</p>
   <div class="centrat">
-    <div class='tableauPlaceholder' id='viz1718189634968' style='position: relative'><noscript><a href='#'><img alt='Transport ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;Transport_17181816881130&#47;Transport&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Transport_17181816881130&#47;Transport' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;Transport_17181816881130&#47;Transport&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718189634968');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    <div class='tableauPlaceholder' id='viz1718614639790' style='position: relative'><noscript><a href='#'><img alt='Transport ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ev&#47;evolucio-transport-icones&#47;Transport&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='evolucio-transport-icones&#47;Transport' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ev&#47;evolucio-transport-icones&#47;Transport&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718614639790');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='100%';vizElement.style.height='577px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
   </div>
   </section>
   <section>
-    <h3>Tipus de béns</h3>
+    <h3>Evolució de les importacions/exportacions per destinació econòmica dels béns</h3>
+    <p>Podem dividir la destinació econòmica dels béns segons:</p>
+    <ul>
+      <li>Béns de consum:</li>
+      <ul>
+        <li>Aliments, begudes i tabac</li>
+        <li>Altres béns de consum</li>
+      </ul>
+      <li>Béns de capital:</li>
+      <ul>
+        <li>Maquinària i altres béns d'equipament</li>
+        <li>Material de transport i altres béns de capital</li>
+      </ul>
+      <li>Béns intermedis:</li>
+      <ul>
+        <li>Prod. agricultura, silvicultura i pesca</li>
+        <li>Prod. energètics i industrials</li>
+      </ul>
+    </ul>
+    <br><br>
     <div class="centrat">
 
       <div class='tableauPlaceholder' id='viz1718127949339' style='position: relative'><noscript><a href='#'><img alt='Importacions &#47; Exportacions Béns ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportacionsExportacionsBns&#47;ImportacionsExportacionsBns&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImportacionsExportacionsBns&#47;ImportacionsExportacionsBns' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportacionsExportacionsBns&#47;ImportacionsExportacionsBns&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718127949339');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     </div>
 </section>
 <section>
-    <h3>Nivell tecnològic</h3>
+    <h3>Evolució de les importacions/exportacions de productes industrials, per contingut tecnològic i grups de productes</h3>
+    <p>En aquest cas podem distingir diferents nivells tecnològics que agrupen diferents productes:</p>
+    <ul>
+      <li>Nivell tecnològic alt:</li>
+      <ul>
+        <li>Productes farmacèutics</li>
+        <li>Productes informàtics, electrònics i òptics</li>
+        <li>Altres</li>
+      </ul>
+      <li>Nivell tecnològic mitjà alt:</li>
+      <ul>
+        <li>Productes químics</li>
+        <li>Materials i equips elèctrics, maquinària i vehicles</li>
+        <li>Altres</li>
+      </ul>
+      <li>Nivell tecnològic mitjà baix:</li>
+      <ul>
+        <li>Cautxú i mat. plàstiques, prod. minerals no metàl·lics i metal·lúrgia</li>
+        <li>Productes metàl·lics</li>
+        <li>Altres</li>
+      </ul>
+    <li>Nivell tecnològic baix:</li>
+      <ul>
+        <li>Productes alimentaris, tèxtils, cuir i calçat, fusta i paper</li>
+        <li>Altres</li>
+      </ul>
+    </ul>
+    <br><br>
     <div class="centrat">
     <div class='tableauPlaceholder' id='viz1718176699350' style='position: relative'><noscript><a href='#'><img alt='Imortacions&#47;Exportacions Nivell Tech ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImortacionsExportacionsNivellTech&#47;ImortacionsExportacionsNivellTech&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImortacionsExportacionsNivellTech&#47;ImortacionsExportacionsNivellTech' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImortacionsExportacionsNivellTech&#47;ImortacionsExportacionsNivellTech&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718176699350');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.4)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.4)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
     </div>
   </section>
   <section>
-    <h3>Rànquing països</h3>
+    <h3>Importacions i exportacions en l'àmbit geogràfic</h3>
+    <p>Volem saber quins països tenen comerç amb Catalunya i d'aquests en fem un rànquing del 15 països amb més volum d'inercanvi.</p>
+    <h3>Importacions</h3>
     <div class="centrat">
-      <div class='tableauPlaceholder' id='viz1718261725725' style='position: relative'><noscript><a href='#'><img alt='Ranquing països ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pa&#47;pasos-flags&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='pasos-flags&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pa&#47;pasos-flags&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718261725725');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='100%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+      <div class='tableauPlaceholder' id='viz1718378798884' style='position: relative'><noscript><a href='#'><img alt='Ranquing països ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;Ranquingimportacions&#47;Ranquingpasos&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Ranquingimportacions&#47;Ranquingpasos' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;Ranquingimportacions&#47;Ranquingpasos&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718378798884');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+    <br>
+    <h3>Exportacions</h3>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718378962629' style='position: relative'><noscript><a href='#'><img alt='Ranquing exporatcions ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;Ranquingexportacions&#47;Ranquingexporatcions&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Ranquingexportacions&#47;Ranquingexporatcions' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ra&#47;Ranquingexportacions&#47;Ranquingexporatcions&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718378962629');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
     </div>
   </section>
-          <div class="bloc">
-    
-      <h3>Descripció</h3>
-      <p></p>
-  </div>
+
+  <section>
+    <h3>Importacions i Exportacions segons les branques d'activitat</h3>
+    <p>Tot seguit comparem els volums de les importacions i exportacions segons la branca d'activitat. Podem comprar a la vegada aquests volums per diferents anys i ordenar de més a menys.</p>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718276819974' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportacionsExportacionsbranca&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ImportacionsExportacionsbranca&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Im&#47;ImportacionsExportacionsbranca&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718276819974');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.45)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.45)+'px';} else { vizElement.style.width='90%';vizElement.style.height='627px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+
+  <section>
+    <h3>Importacions i Exportacions segons el mitjà de transport</h3>
+    <p>Tot seguit comparem els volums de les importacions i exportacions segons el mitjà de transport en que viatgen les mercaderies.</p>
+    <p>Ja hem vist abans que els principals mitjans de transport són: per carretera, marítim, aèri i ferroviari.</p>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718638739200' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;Tranport&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Tranport&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tr&#47;Tranport&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718638739200');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='90%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='90%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+  <section>
+    <h3>Importacions i exportacions de productes industrials, per contingut tecnològic i grups de productes</h3>
+    <p>Ja hem vist abans la classificació dels productes industrials segons el nivel tecnològic. Ara volem veure com es distribueixen les importacions i exportacions segons aquesta classificació.</p>
+    <p>Podem triar l'any per tal de veure els volums de comerç.</p>
+    <h3>Tecnologia: Importacions</h3>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718612697214' style='position: relative'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pi&#47;Piechart_17185634305960&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Piechart_17185634305960&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pi&#47;Piechart_17185634305960&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718612697214');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='100%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+
+  <section>
+    <h3>Tecnologia: Exportacions</h3>
+    <div class="centrat">
+      <div class='tableauPlaceholder' id='viz1718613127894' style='position: relative'><noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pi&#47;Piechartexport&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Piechartexport&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pi&#47;Piechartexport&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718613127894');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.35)+'px';} else { vizElement.style.width='100%';vizElement.style.height='527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </section>
+  <br><br>
+  <h2>Comentàris addicionals: característiques del joc de dades, preguntes que respon, ...</h2>
+  <section>
   <div class="bloc">
-    <h3>Estructura</h3>
+    <h2>Característiques més destacades del joc de dades:</h2>
     <ul>
-      <li>Introducció</li>
-      <li>Mapa</li>
-      <li>Ditribució</li>
-      <li>Sismicitat per país</li>
-      <li>Mortalitat</li>
-      <li>Conclusió final</li>
+      <li>Dades lliures que provenen d'una font fiable</li>
+      <li>Dades netes: no requereixen de tractaments i filtrats per eliminar valors absents o nuls, llevat d'algun cas puntual.</li>
+      <li>Dades de les importacions i exportacions, compatibles, és a dir, es poden fusionar i agrupar per temes.</li>
+      <li>S'han afegit amb un treball addicional, icones de productes i transports i banderes dels països del món.</li>
     </ul>
     
   </div>
-</header>
-
 </section>
 
 <section>
-  <h3>Introducció:</h3>
-  
+  <div class="bloc">
+    <h2>Preguntes que respon la visualització:</h2>
+    <ul>
+      <li>Com han evolucionat les importacions i exportacions en els darrers anys des d'un punt de vista general, segons el mitjà de transport, el tipus de bé o el nivell tecnològic ? </li>
+      <li>Quins anys presenten algun succés rellevant?</li>
+      <li>Amb quins països té o ha tingut comerç Catalunya, tenint en compte l'any?</li>
+      <li> Quins són els països amb més quantitat de volum d'intercanvi?</li>
+      <li>Com són les importacions i exportacions segons la branca d'activitat?</li>
+      <li>Amb quins mitjans de transport i qmb quins volums es mouen les mercaderies?</li>
+      <li>Com es distribueixen les importacions i exportacions segons el nivell tecnològic dels productes industrials?</li>
+    </ul>
+    
+  </div>
 </section>
-  
+
+<section>
+  <div class="bloc">
+    <h2>Gràfiques, visualitzacions i elements interactius que s'ha usat:</h2>
+    <ul>
+      <li>Gràfiques de línies interacitives.</li>
+      <li>Mapa interactiu.</li>
+      <li>Gràfiques de barres verticals interactives.</li>
+      <li>Gràfiques de barres horitzontals senzilles i acumulatives interactives.</li>
+      <li>Gràfiques Pie charts, (donuts) interactius.</li>
+    </ul>
+    
+  </div>
+</section>
+
+<section>
+  <div class="bloc">
+    <h2>Reflexió: què he après del conjunt de dades? Què he après de les tècniques utilitzades? Què m'hauria agradat fer i no podia? :</h2>
+    <ul>
+      <li>Hem treballat amb un conjunt de dades que ens ha donat una visió general i detallada de les importacions i exportacions de Catalunya i la seva variació amb el temps.</li>
+      <li>Hem fet servir <em>R Studio</em> i <em>Tableau Public</em>. La primera per ordenar dades de manera que ens facilita la feina i la segona és una eina potent per fer visualitzacions bastant configurables.</li>
+      <li>Hagués estat bé afegir un disseny més atractiu i usar altres eines més lliures i configurables per les visualitzacions, (un nivell més de JavaScript).</li>
+    </ul>
+    
+  </div>
+</section>
 </body>
 </html>
