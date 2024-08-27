@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Opcions del mapa
 const mapOptions = {
@@ -13,20 +13,19 @@ const initCoords = [41.60281747649918, 2.6245074122928997];
 const initZoom = 10;
 
 // Mapa centrat
-const map = L.map('map', mapOptions).setView(initCoords, initZoom);
+const map = L.map("map", mapOptions).setView(initCoords, initZoom);
 
-const tiles = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg',
-  {
-    maxZoom: 18,
-    attribution:
-      '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }
-).addTo(map);
+// Canviem l'aspecte del mapa
+// https://leaflet-extras.github.io/leaflet-providers/preview/
+const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+}).addTo(map);
 
 // Icones
 const treeIcon = L.icon({
-  iconUrl: './images/treeIcon.png',
+  iconUrl: "./images/treeIcon.png",
   iconSize: [32, 37], // size of the icon
   iconAnchor: [16, 37], // point of the icon which will correspond to marker's location
   // cal modificar els valors: over 16, down 37 (middle bottom),
@@ -37,7 +36,7 @@ const treeIcon = L.icon({
 });
 
 const blackIcon = L.icon({
-  iconUrl: './images/blackIcon.svg',
+  iconUrl: "./images/blackIcon.svg",
   iconSize: [48, 56],
   iconAnchor: [24, 56],
   popupAnchor: [0, -32],
@@ -50,7 +49,7 @@ const markOptions1 = {
 };
 const marker1 = L.marker(markCoords1, markOptions1)
   .addTo(map)
-  .bindPopup('Black Icon');
+  .bindPopup("Black Icon");
 
 const markCoords2 = [41.60281747649918, 2.6245074122928997];
 const markOptions2 = {
@@ -58,9 +57,9 @@ const markOptions2 = {
 };
 const marker2 = L.marker(markCoords2, markOptions2)
   .addTo(map)
-  .bindPopup('Tree Icon');
+  .bindPopup("Tree Icon");
 
 // event sobre el mapa, restaurem posició al clicar
-map.on('click', function () {
+map.on("click", function () {
   map.setView(initCoords, initZoom);
 });

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 // https://stackoverflow.com/questions/17720202/set-div-height-to-window-innerheight-in-javascript
 
 // Opcions del mapa
@@ -14,27 +14,26 @@ const initCoords = [41.60281747649918, 2.6245074122928997];
 const initZoom = 11;
 
 // Creem mapa
-const map = L.map('map', mapOptions).setView(initCoords, initZoom);
+const map = L.map("map", mapOptions).setView(initCoords, initZoom);
 
-const tiles = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg',
-  {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }
-).addTo(map);
+// Canviem l'aspecte del mapa
+// https://leaflet-extras.github.io/leaflet-providers/preview/
+const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+}).addTo(map);
 
 // Definim icones
 const treeIcon = L.icon({
-  iconUrl: './images/treeIcon.png',
+  iconUrl: "./images/treeIcon.png",
   iconSize: [32, 37],
   iconAnchor: [16, 37],
   popupAnchor: [-3, -37],
 });
 
 const blackIcon = L.icon({
-  iconUrl: './images/blackIcon.svg',
+  iconUrl: "./images/blackIcon.svg",
   iconSize: [48, 56],
   iconAnchor: [24, 56],
   popupAnchor: [0, -32],
@@ -64,9 +63,9 @@ map.fitBounds(featureGroup.getBounds(), {
 });
 
 // opcions per turfjs
-const options = { units: 'kilometers' };
+const options = { units: "kilometers" };
 // Event DISTÀNCIA quan ens movem per sobre el mapa
-map.on('mousemove', function (e) {
+map.on("mousemove", function (e) {
   // https://turfjs.org/docs/api/distance
   // Punt on es troba el cursor
   const from = turf.point([e.latlng.lat, e.latlng.lng]);
@@ -85,19 +84,19 @@ map.on('mousemove', function (e) {
 //-------------------------------------------------------
 // Event INPUT CENTER quan canviem el centre del mapa
 // Input DOM element
-const inputCenter = document.querySelector('#current-center');
-map.on('moveend', function () {
+const inputCenter = document.querySelector("#current-center");
+map.on("moveend", function () {
   // Actualitzem les coordenades en el <input> (retallem decimals)
   inputCenter.textContent =
-    map.getCenter().lat.toFixed(4) + ', ' + map.getCenter().lng.toFixed(4);
+    map.getCenter().lat.toFixed(4) + ", " + map.getCenter().lng.toFixed(4);
 });
 
 //-------------------------------------------------------
 // Event MOSTRAR/AMAGAR markers
 // button DOM element
-const buttonToggle = document.querySelector('#toggleLayer');
+const buttonToggle = document.querySelector("#toggleLayer");
 // Event sobre el button
-buttonToggle.addEventListener('click', function () {
+buttonToggle.addEventListener("click", function () {
   // comprovem si existeix la capa 'featureGroup' i l'eliminem o afegim
   if (map.hasLayer(featureGroup)) {
     map.removeLayer(featureGroup);
@@ -109,15 +108,15 @@ buttonToggle.addEventListener('click', function () {
 //-------------------------------------------------------
 // Event MOSTRAR/AMAGAR slider
 // DOM elements
-const advancedBtn = document.querySelector('#advanced');
+const advancedBtn = document.querySelector("#advanced");
 
-const slideIn = document.querySelector('#slide-in');
-advancedBtn.addEventListener('click', function () {
-  slideIn.classList.toggle('in');
+const slideIn = document.querySelector("#slide-in");
+advancedBtn.addEventListener("click", function () {
+  slideIn.classList.toggle("in");
 });
 
 // event sobre el mapa, restaurem posició al clicar
-map.on('click', function () {
+map.on("click", function () {
   map.fitBounds(featureGroup.getBounds(), {
     padding: [20, 20],
   });

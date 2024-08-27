@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Opcions del mapa
 const mapOptions = {
@@ -13,47 +13,46 @@ const initCoords = [41.60281747649918, 2.6245074122928997];
 const initZoom = 11;
 
 // Creem mapa
-const map = L.map('map', mapOptions).setView(initCoords, initZoom);
+const map = L.map("map", mapOptions).setView(initCoords, initZoom);
 
-const tiles = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg',
-  {
-    maxZoom: 18,
-    attribution:
-      '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }
-).addTo(map);
+// Canviem l'aspecte del mapa
+// https://leaflet-extras.github.io/leaflet-providers/preview/
+const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+}).addTo(map);
 
 // geoJson creat amb geojson.io
 const geojson = {
-  type: 'FeatureCollection',
+  type: "FeatureCollection",
   features: [
     {
-      type: 'Feature',
+      type: "Feature",
       properties: {},
       geometry: {
         coordinates: [2.624824577043796, 41.602910121135864],
-        type: 'Point',
+        type: "Point",
       },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       properties: {},
       geometry: {
         coordinates: [2.698425397418305, 41.627821277435174],
-        type: 'Point',
+        type: "Point",
       },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       properties: {},
       geometry: {
         coordinates: [2.606111439966554, 41.657551613581006],
-        type: 'Point',
+        type: "Point",
       },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       properties: {},
       geometry: {
         coordinates: [
@@ -64,11 +63,11 @@ const geojson = {
           [2.5901242235759128, 41.60607846580601],
           [2.637048885820633, 41.62494173285302],
         ],
-        type: 'LineString',
+        type: "LineString",
       },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       properties: {},
       geometry: {
         coordinates: [
@@ -80,7 +79,7 @@ const geojson = {
             [2.6292705561699563, 41.64667302206121],
           ],
         ],
-        type: 'Polygon',
+        type: "Polygon",
       },
     },
   ],
@@ -88,7 +87,7 @@ const geojson = {
 
 // Definim icones
 const treeIcon = L.icon({
-  iconUrl: './images/treeIcon.png',
+  iconUrl: "./images/treeIcon.png",
   iconSize: [32, 37],
   iconAnchor: [16, 37],
   popupAnchor: [-3, -37],
@@ -99,8 +98,8 @@ const geoJsonOptions = {
   // estil per línies i poligons
   style: function (feature) {
     return {
-      fillColor: 'magenta',
-      color: 'black',
+      fillColor: "magenta",
+      color: "black",
       weight: 0.8,
       opacity: 0.8,
     };
@@ -113,7 +112,7 @@ const geoJsonOptions = {
   },
   // Funció que es crida per cada Feature (punts, línies, polígons,...)
   onEachFeature: function (feature, layer) {
-    if (feature.geometry.type === 'Point') {
+    if (feature.geometry.type === "Point") {
       layer.bindPopup(
         `Hello from<br>lat: ${feature.geometry.coordinates[1].toFixed(3)}, 
         lon: ${feature.geometry.coordinates[0].toFixed(3)}`
@@ -128,6 +127,6 @@ const geoJsonOptions = {
 L.geoJSON(geojson, geoJsonOptions).addTo(map);
 
 // event sobre el mapa, restaurem posició al clicar
-map.on('click', function () {
+map.on("click", function () {
   map.setView(initCoords, initZoom);
 });
