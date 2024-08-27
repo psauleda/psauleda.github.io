@@ -1,0 +1,14 @@
+1- Partim de l'exercici anterior (ex 2).
+
+2- Definim un poppup amb el contingut que volguem.
+
+https://leafletjs.com/reference.html#popup
+
+Hi posem una imatge, hem de definir l'amplada real d'aquesta,
+ho fem a style.css, si no indiquem l'amplada, en el primer click
+la imatge surt fora dels límits.
+
+3- Inspeccionem el css en el navegador i modifiquem les classes
+de Leaflet per tal de personalitzar l'estil (font, color, fons, ...).
+
+3- Afegim el popup a un dels markers, (bindPopup()).

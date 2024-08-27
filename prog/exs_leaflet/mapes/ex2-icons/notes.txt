@@ -1,0 +1,11 @@
+1- Partim de l'exercici anterior (ex 1)
+
+2- Baixem un parell d'icones, (map markers), (svg, png, ...)
+
+icons: https://mapicons.mapsmarker.com
+
+3- Ens fixem en l'exemple de Leaflet sobre icones:
+
+https://leafletjs.com/examples/custom-icons/
+
+També la documentació: https://leafletjs.com/reference.html#icon

@@ -1,0 +1,19 @@
+1- Creem un geoJson a mà amb 3 punts, 1 poligon i una línia:
+
+https://geojson.io/
+
+2- Partim de l'exercici anterior (ex 3) i hi afegim el geoJson creat.
+(Podem treure els salts de línia per tal que no ocupi tant d'espai,
+https://removelinebreaks.net/)
+
+3- Considerem només una icona
+
+4- Afegim el geojson al mapa amb varies opcions (dins de {}):
+(https://leafletjs.com/reference.html#geojson)
+
+  - style (per línies i poligons): color, emplenat, gruix de la línia, ...
+
+  - pointToLayer: Funció que defineix com els punts GeoJSON generen capes.
+
+  - onEachFeature: Funció que es crida per cada Feature, un cop s'ha creat i donat estil.
+  És força útil per adjuntar events i popups. 

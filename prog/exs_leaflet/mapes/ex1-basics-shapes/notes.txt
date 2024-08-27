@@ -1,0 +1,9 @@
+1- Partim del primer exemple de Leaflet:
+
+https://leafletjs.com/examples/quick-start/
+
+2- Canviem l'aspecte del mapa:
+
+https://leaflet-extras.github.io/leaflet-providers/preview/
+
+2- Canviem centres i variem event al fer clic o desplaçar o fer zoom

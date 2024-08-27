@@ -1,0 +1,9 @@
+El que volem fer és quan carreguem la pàgina, ajustar el mapa
+de manera que inclogui tots els punts, és a dir, volem acotar el mapa
+amb uns punts frontera (bounds).
+
+1- En aquest cas, partim de l'exercici anterior (Ex 5(1)), però ara
+definim 3 markers manualment, (https://leafletjs.com/reference.html#marker)
+
+2- Fem servir featureGroup() que fa el mateix per totes les capes, és a dir,
+per tots els punts (o altres elements) que li passem.

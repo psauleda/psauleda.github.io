@@ -1,0 +1,27 @@
+Volem associar un event sobre el mateix mapa.
+
+Partim de l'exercici anterior (Ex 6), per tant mantenim els
+els events sobre els markers.
+
+1- Veurem tres exemples d'events, per això creem dos elements HTML a
+index.html:
+
+  - Un <input type="text" id="current-center" />
+  - Un <button id="toggleLayer">Toggle</button>
+
+2- Per afegir un event al mapa fem: map.on('tipus event, callback). 
+
+Definim 3 events:
+
+  (a) Canviem la icona quan la distància del cursor als markers és superior 
+  a un cert valor (e.g. 10 km), es mostra dinàmicament mentre movem el cursor
+  per sobre el mapa.
+  Per calcular aquesta distància fem servir Turfjs:
+
+      https://turfjs.org/docs/api/distance 
+
+  (b) Mostrem les coordenades del centre del mapa al <input>. Aquestes canvien
+  quan desplacem o movem el mapa.
+  L'event 'moveend' es dispara quan deixem de moure o arrastrar el mapa.
+
+  (c) Mostrem/Amaguem els markers quan apretem el <button>.

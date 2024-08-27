@@ -1,0 +1,18 @@
+Volem veure un exemple de com funcionen els events sobre un element,
+en aquest cas sobre markers.
+
+1- Aprofitem l'exercici anterior (ex 5(2)). Definim dues icones
+pels markers.
+
+2- Creem 3 markers, per fer-ho, definim un array que els contindrà i
+un array de coordenades
+
+Per cada coordenada creem un marker i li associem una icona,
+(https://leafletjs.com/reference.html#marker).
+En el marker creat li adjuntem dos events, un per 'mouseover' i 
+l'altre per 'mouseout', ho fem: marker.on('mouseevent', callback)
+
+Per 'mouseover': li canviem l'icona i li afegim i mostrem popup.
+Per 'mouseout': li restaurem l'icona i tanquem el popup
+
+3- Mantenim el centrat usant els limits dels punts.

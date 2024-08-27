@@ -1,0 +1,9 @@
+El que volem fer és quan carreguem la pàgina, ajustar el mapa
+de manera que inclogui tots els punts, és a dir, volem acotar el mapa
+amb uns punts frontera o límit (bounds).
+
+1- Partim de l'exercici anterior (ex 4)
+
+2- fem servir fitBounds() i getBounds() per acotar el mapa.
+(Aquestes funcions també ens poden servir per centrar el mapa per uns
+element donat).
