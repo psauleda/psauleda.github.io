@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Opcions del mapa
 // Full screen: https://github.com/Leaflet/Leaflet.fullscreen
@@ -14,22 +14,19 @@ const initCoords = [41.60281747649918, 2.6245074122928997];
 const initZoom = 11;
 
 // Creem un mapa centrat a initCoords
-const map = L.map('map', mapOptions).setView(initCoords, initZoom);
+const map = L.map("map", mapOptions).setView(initCoords, initZoom);
 
 // Canviem l'aspecte del mapa
 // https://leaflet-extras.github.io/leaflet-providers/preview/
-const tiles = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg',
-  {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }
-).addTo(map);
+const tiles = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+}).addTo(map);
 
 // Funció associada al clic en el mapa
 // Si estem desplaçats del centre centrem de nou
-map.on('click', function () {
+map.on("click", function () {
   // centrem a initCoords amb initZoom
   map.setView(initCoords, initZoom);
 });
