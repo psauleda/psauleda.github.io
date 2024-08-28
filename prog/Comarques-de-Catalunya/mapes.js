@@ -1,88 +1,100 @@
-const map = L.map('map', {
-    minZoom: 8,
-}).setView([41.702, 1.9], 8);
+'strict mode';
 
-const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-}).addTo(map);
+// Coordenades i zoom inicials
+const initCoords = [41.702, 1.9];
+const initZoom = 8;
 
-const geojson = L.geoJson(comarques, {
-    style: function(feature) {
-        switch (feature.properties.PROV) {
-            case 'Lleida': return {color: "red",fillOpacity: 0.2};
-            case 'Tarragona':   return {color: "blue"};
-            case 'Barcelona':   return {color: "green"};
-            case 'Girona':   return {color: "orange"};
-        }
-    },
-    onEachFeature
-}).addTo(map);
+// Opcions del mapa
+const mapOptions = {
+  minZoom: 8,
+  zoomControl: false,
+};
 
-const cityIcon = L.icon({
-    iconUrl: 'city.png',
-    iconSize:     [32, 32], // Mida de la icona
-    // IMPORTANT: anchor s'ha de modificar perquè el punt no variï
-    iconAnchor:   [20, 16], // point of the icon which will correspond to marker's location
-    //popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
-  });
+// Creem mapa
+const map = L.map('map', mapOptions).setView(initCoords, initZoom);
 
+const tiles = L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+  {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  }
+).addTo(map);
 
-//let popup = L.popup();
+// Variable que ens guarda la capa (comarca) quan cliquem una comarca
+// La fem global
 let prevLayer = null;
-let comar = "Maresme";
-function onMapClick(e) {
-    /* popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.target.feature.properties.NOMCOMAR)
-        .openOn(map); */
-        /* console.log(e.target.feature.properties.NOMCOMAR);
-        console.log(comar)
-        if (e.target.feature.properties.NOMCOMAR === comar) {
-        console.log(`Well done ! ${e.target.feature.properties.NOMCOMAR}`);
-        } else {
-            console.log('Try again');
-        } */
-        if (prevLayer !== null) {
+
+// Carreguem dades de l'arxiu geoJSON de les comarques
+async function getGeoJson() {
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/psauleda/Comarques-de-Catalunya/main/comarques_prov.json');
+    const dades = await response.json();
+    // Afegim geojeson al mapa
+    const comarquesGJ = L.geoJson(dades, {
+      // estil dels polígons
+      style: function (feature) {
+        const colors = {
+          Lleida: 'red',
+          Tarragona: 'blue',
+          Barcelona: 'green',
+          Girona: 'orange',
+        };
+        return {
+          color: '#333', // frontera
+          fillColor: colors[feature.properties.PROV], // emplenat
+          fillOpacity: 0.2,
+          weight: 0.5, // gruix frontera
+        };
+      },
+      // Per cada feature(comarca = poligon)
+      onEachFeature: function (feature, layer) {
+        // Popup amb info de la comarca
+        let popupContent = `<p><b>COMARCA:</b> ${feature.properties.NOMCOMAR}</p>`;
+        popupContent += `<p><b>CAPITAL:</b> ${feature.properties.CAPCOMAR}</p>`;
+        layer.bindPopup(popupContent);
+
+        // events mouse over/out
+        layer.on('mouseover', function () {
+          console.log(prevLayer);
+          // Si no és la capa seleccionada canviem l'opacitat
+          if (prevLayer !== layer) {
+            layer.setStyle({ fillOpacity: 0.4 });
+          }
+        });
+        layer.on('mouseout', function () {
+          console.log(prevLayer);
+          if (prevLayer !== layer) {
+            layer.setStyle({ fillOpacity: 0.2 });
+          }
+        });
+        // Click sobre la comarca
+        layer.on('click', function () {
+          if (prevLayer !== null) {
             // Reset style
-            prevLayer.setStyle({fillOpacity: 0.2});
-        }
+            prevLayer.setStyle({ fillOpacity: 0.2 });
+          }
+
+          // Centrat
+          //map.fitBounds(e.target.getBounds());
+          //var layer = e.target;
+
+          // Salvem el valor de la layer clicada
+          prevLayer = layer;
+          // Seleccionem més fosc la layer clicada
+          layer.setStyle({ fillOpacity: 0.8 });
+          console.log(prevLayer);
+        });
+      },
+    }).addTo(map);
+  } catch (err) {
+    console.log(err);
+  }
 }
+getGeoJson();
 
-
-
-function onEachFeature(feature, layer) {
-    //let popupContent = `<p><b>PROVÍNCIA:</b> ${feature.properties.PROV}</p>`;
-    let popupContent = `<p><b>COMARCA:</b> ${feature.properties.NOMCOMAR}</p>`;
-    popupContent += `<p><b>CAPITAL:</b> ${feature.properties.CAPCOMAR}</p>`;
-
-    layer.bindPopup(popupContent);
-    
-    layer.on({
-        click: function(e) {
-            if (prevLayer !== null) {
-                // Reset style
-                prevLayer.setStyle({fillOpacity: 0.2});
-                console.log(prevLayer)
-            }
-
-            // Centrat
-            //map.fitBounds(e.target.getBounds());
-            //var layer = e.target;
-          
-
-            // Store clicked layer into this variable
-            prevLayer = layer;
-            layer.setStyle({fillOpacity: 0.8})
-            //console.log(layer)
-        }
-        
-    });
-}
-map.on('click', function(e){
-    console.log(prevLayer);
-    prevLayer.setStyle({fillOpacity: 0.2});
-
+// resetegem opacitat si cliquem fora de Catalunya
+map.on('click', function (e) {
+  console.log(prevLayer);
+  prevLayer.setStyle({ fillOpacity: 0.2 });
 });
-/* global comarques */
-
-
